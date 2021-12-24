@@ -1,5 +1,9 @@
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
+  padding:0;
   font-family: Arial, Helvetica, sans-serif
 }
 .app {
@@ -7,8 +11,4 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-.map {
-  width:100vw;
-  height: 100vh;
-  position:relative;
-}
+

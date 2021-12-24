@@ -1,8 +1,9 @@
-import { YMaps, Map, ZoomControl } from "react-yandex-maps";
+import { YMaps, Map, ZoomControl, Placemark } from "react-yandex-maps";
+import { StyledMap } from "../styled/YandexMap.styled";
 
 const mapData = {
-  center: [28.46824, -16.25462],
-  zoom: 8.5,
+  center: [50, 0],
+  zoom: 1,
 };
 
 const optionsMap = {
@@ -14,16 +15,16 @@ const optionsMap = {
   avoidFractionalZoom: false,
 };
 
-const optionsZoom={
-    size:'small',
-    position: {
-        bottom:10,
-        left:10
-    }
-}
+const optionsZoom = {
+  size: "small",
+  position: {
+    bottom: 10,
+    left: 10,
+  },
+};
 
 export const YandexMap = () => (
-  <div className="map">
+  <StyledMap>
     <YMaps>
       <Map
         defaultState={mapData}
@@ -31,8 +32,8 @@ export const YandexMap = () => (
         width="100%"
         height="100%"
       >
-      <ZoomControl options={optionsZoom}/>    
+        <ZoomControl options={optionsZoom} />
       </Map>
     </YMaps>
-  </div>
+  </StyledMap>
 );
