@@ -35,7 +35,7 @@ export const categoriesThunkAC = () => (dispatch) => {
     })
     .then((data) => {
       dispatch(categoriesSetAC(data.categories));
-      console.log(data.categories);
+      console.log(data.categories)
     })
     .catch((error) => {
       console.error(error);

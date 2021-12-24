@@ -13,8 +13,12 @@ export const StyledNav = styled.ul`
   margin: 0px;
   background: rgba(0, 0, 0, 0.9);
   list-style-type: none;
+  font-size: 1.4rem;
   color: rgb(222, 222, 222);
 
+  & li {
+    margin: 5px 0;
+  }
   & li:not(:last-child) {
     margin-right: 10px;
   }
@@ -24,3 +28,5 @@ export const StyledNav = styled.ul`
     cursor: pointer;
   }
 `;
+
+
