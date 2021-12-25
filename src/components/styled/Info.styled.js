@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledInfoCategoriesMarker = styled.div`
+  display: ${({ extendNavigation }) => (extendNavigation ? "none" : "block")};
   position: absolute;
   bottom: 70px;
   left: 6.5px;
@@ -36,22 +37,21 @@ export const StyledInfoCategories = styled.div`
   }
 
   &::-webkit-scrollbar {
-	width: 10px;
-	background-color: transparent;
-}
+    width: 10px;
+    background-color: transparent;
+  }
 
   &::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
+    border-radius: 10px;
+  }
 
-&::-webkit-scrollbar-thumb {
-  border-radius: 10px;
- 
-  background: rgba(222, 222, 222,.2);
-}
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
 
-&::-webkit-scrollbar-thumb:hover {
-  background:rgba(222, 222, 222,.4) ;
-}
+    background: rgba(222, 222, 222, 0.2);
+  }
 
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(222, 222, 222, 0.4);
+  }
 `;

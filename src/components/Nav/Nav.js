@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 
 import { categoriesThunkAC } from "../../redux/Nav/actionsNav";
@@ -10,17 +9,19 @@ import {
   StyledNavExtend,
 } from "../styled/Nav.styled";
 
-export const Nav = () => {
+export const Nav = ({ isMobile, cbExtendNav }) => {
   const [extendNav, setExtendNav] = useState(false);
-  const isMobile = useMediaQuery({
-    query: "(max-width: 601px)",
-  });
 
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(categoriesThunkAC());
   }, [dispatch]);
+
+  const extendNavHandler = () => {
+    setExtendNav((curr) => !curr);
+    cbExtendNav(!extendNav);
+  }
 
   return (
     <>
@@ -38,9 +39,7 @@ export const Nav = () => {
           display={categories.status ? "flex" : "none"}
         >
           <StyledOpenButton
-            onClick={() => {
-              setExtendNav((curr) => !curr);
-            }}
+            onClick={extendNavHandler}
           >
             {extendNav ? <>&#10005;</> : <>&#8801;</>}
           </StyledOpenButton>

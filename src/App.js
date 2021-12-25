@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import { YandexMap } from "./components/Map/YandexMap";
 import { Nav } from "./components/Nav/Nav";
@@ -7,16 +8,28 @@ import { InfoCategories } from "./components/Info/InfoCategories";
 
 function App() {
   const [showInfoCategories, setShowInfoCategories] = useState(false);
-  
-  const cbShowInfoCategories = (bool) => {
-    setShowInfoCategories(bool);
-  }
+  const [extendNavigation, setExtendNavigation] = useState(false);
+  const isMobile = useMediaQuery({
+    query: "(max-width: 601px)",
+  });
+
+  const cbShowInfoCategories = (iShow) => {
+    setShowInfoCategories(iShow);
+  };
+
+  const extendNav = (isExtend) => {
+    setExtendNavigation(isExtend);
+  };
+
   return (
     <div className="app">
       <YandexMap />
-      <Nav />
+      <Nav isMobile={isMobile} cbExtendNav={extendNav} />
       <InfoCategories showInfoCategories={showInfoCategories} />
-      <InfoCategoriesMarker cbShowInfoCategories={cbShowInfoCategories} />
+      <InfoCategoriesMarker
+        cbShowInfoCategories={cbShowInfoCategories}
+        extendNavigation={extendNavigation}
+      />
     </div>
   );
 }
