@@ -17,7 +17,7 @@ export const InfoCategoriesMarker = ({
     cbShowInfoCategories(showInfo);
   };
   return (
-    <StyledInfoCategoriesMarker extendNavigation={extendNavigation}>
+    <StyledInfoCategoriesMarker extendNavigation={extendNavigation} active={showInfo}>
       {status && <Icon icon={questionMark} onClick={showInfoHandler} />}
     </StyledInfoCategoriesMarker>
   );

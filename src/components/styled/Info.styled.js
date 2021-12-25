@@ -7,16 +7,31 @@ export const StyledInfoCategoriesMarker = styled.div`
   left: 6.5px;
   font-size: 3.6rem;
   color: rgba(0, 0, 0, 0.6);
+  transition: all 0.25s;
+  animation: ${({ active }) =>
+    active ? "active .25s alternate infinite" : "null"};
+
+  @keyframes active {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0.9;
+      transform: scale(0.9);
+    }
+  }
 
   &:hover {
     cursor: pointer;
-    transform: scale(0.9);
-    opacity: 0.9;
+    transform: ${({ active }) => (!active ? "scale(0.9)" : "null")};
+    opacity: ${({ active }) => (!active ? "0.9" : "null")};
   }
 `;
 
 export const StyledInfoCategories = styled.div`
-  display: ${({ isShow, extendNavigation }) => isShow || extendNavigation ? 'none' : 'block'};
+  display: ${({ isShow, extendNavigation }) =>
+    isShow || extendNavigation ? "none" : "block"};
   position: absolute;
   width: 80%;
   height: 50%;
