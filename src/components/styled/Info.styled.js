@@ -18,6 +18,7 @@ export const StyledInfoCategories = styled.div`
   display: ${({ display }) => display};
   position: absolute;
   width: 80%;
+  height: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -27,8 +28,30 @@ export const StyledInfoCategories = styled.div`
   border-radius: 10px;
   padding: 10px;
   text-align: justify;
+  overflow: auto;
+  word-wrap: break-word;
 
   & span {
     font-weight: 800;
   }
+
+  &::-webkit-scrollbar {
+	width: 10px;
+	background-color: transparent;
+}
+
+  &::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+&::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+ 
+  background: rgba(222, 222, 222,.2);
+}
+
+&::-webkit-scrollbar-thumb:hover {
+  background:rgba(222, 222, 222,.4) ;
+}
+
 `;
