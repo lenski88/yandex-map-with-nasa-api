@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 
 import { StyledInfoCategories } from "../styled/Info.styled";
 
-export const InfoCategories = ({showInfoCategories}) => {
+export const InfoCategories = ({showInfoCategories, extendNavigation}) => {
   const info = useSelector((state) => state.categories);
   return (
-    <StyledInfoCategories display={showInfoCategories ? 'block' : 'none'}>
+    <StyledInfoCategories extendNavigation={extendNavigation} isShow={showInfoCategories}>
       {info.status
         ? info.categories.map((item) => {
             return (

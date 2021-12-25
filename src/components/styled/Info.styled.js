@@ -16,7 +16,7 @@ export const StyledInfoCategoriesMarker = styled.div`
 `;
 
 export const StyledInfoCategories = styled.div`
-  display: ${({ display }) => display};
+  display: ${({ isShow, extendNavigation }) => isShow || extendNavigation ? 'none' : 'block'};
   position: absolute;
   width: 80%;
   height: 50%;

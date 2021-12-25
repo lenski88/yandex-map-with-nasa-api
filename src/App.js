@@ -25,7 +25,7 @@ function App() {
     <div className="app">
       <YandexMap />
       <Nav isMobile={isMobile} cbExtendNav={extendNav} />
-      <InfoCategories showInfoCategories={showInfoCategories} />
+      <InfoCategories showInfoCategories={showInfoCategories} extendNavigation={extendNavigation} />
       <InfoCategoriesMarker
         cbShowInfoCategories={cbShowInfoCategories}
         extendNavigation={extendNavigation}
