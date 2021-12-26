@@ -11,9 +11,9 @@ const DATA_ERROR = "DATA_ERROR";
 
 const initialState = {
   status: null,
-  events: null,
-  selectedEvents: null,
-  coordsSelectedEvents: null
+  events: [],
+  selectedEvents: [],
+  coordsSelectedEvents: []
 };
 
 export const eventsReducer = (state = initialState, action) => {

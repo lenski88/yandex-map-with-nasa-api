@@ -10,7 +10,7 @@ const DATA_ERROR = "DATA_ERROR";
 
 const initialState = {
   status: null,
-  categories: null,
+  categories: [],
 };
 
 export const categoriesReducer = (state = initialState, action) => {

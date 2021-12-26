@@ -10,7 +10,7 @@ import {
   StyledNavExtend,
 } from "../styled/Nav.styled";
 
-export const Nav = ({ isMobile, cbExtendNav }) => {
+export const Nav = ({ isMobile, cbExtendNav, cbCategoryWasSelect }) => {
   const [extendNav, setExtendNav] = useState(false);
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ export const Nav = ({ isMobile, cbExtendNav }) => {
 
   const selectEventHandler = (eo) => {
     dispatch(selectedEventAC(eo.target.innerText));
+    cbCategoryWasSelect();
   };
 
   return (
