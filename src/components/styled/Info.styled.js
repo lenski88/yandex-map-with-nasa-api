@@ -30,8 +30,8 @@ export const StyledInfoCategoriesMarker = styled.div`
 `;
 
 export const StyledInfoCategories = styled.div`
-  display: ${({ isShow, extendNavigation }) =>
-    isShow || extendNavigation ? "none" : "block"};
+  display: ${({ showInfoCategories, extendNavigation }) =>
+    showInfoCategories || extendNavigation ? "none" : "block"};
   position: absolute;
   width: 80%;
   height: 50%;
@@ -46,6 +46,10 @@ export const StyledInfoCategories = styled.div`
   text-align: justify;
   overflow: auto;
   word-wrap: break-word;
+
+  & h2 {
+    text-align: center;
+  }
 
   & span {
     font-weight: 800;

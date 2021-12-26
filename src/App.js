@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import { YandexMap } from "./components/Map/YandexMap";
@@ -20,12 +20,14 @@ function App() {
   const extendNav = (isExtend) => {
     setExtendNavigation(isExtend);
   };
-
   return (
     <div className="app">
       <YandexMap />
       <Nav isMobile={isMobile} cbExtendNav={extendNav} />
-      <InfoCategories showInfoCategories={showInfoCategories} extendNavigation={extendNavigation} />
+      <InfoCategories
+        showInfoCategories={showInfoCategories}
+        extendNavigation={extendNavigation}
+      />
       <InfoCategoriesMarker
         cbShowInfoCategories={cbShowInfoCategories}
         extendNavigation={extendNavigation}

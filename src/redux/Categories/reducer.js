@@ -2,7 +2,7 @@ import {
   CATEGORIES_LOADING,
   CATEGORIES_SET,
   CATEGORIES_ERROR,
-} from "./actionsNav";
+} from "./actions";
 
 const DATA_LOADING = "DATA_LOADING";
 const DATA_SET = "DATA_SET";

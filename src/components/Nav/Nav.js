@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { categoriesThunkAC } from "../../redux/Nav/actionsNav";
+import { categoriesThunkAC } from "../../redux/Categories/actions";
 
 import {
   StyledNav,
@@ -11,7 +11,6 @@ import {
 
 export const Nav = ({ isMobile, cbExtendNav }) => {
   const [extendNav, setExtendNav] = useState(false);
-
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,7 +20,7 @@ export const Nav = ({ isMobile, cbExtendNav }) => {
   const extendNavHandler = () => {
     setExtendNav((curr) => !curr);
     cbExtendNav(!extendNav);
-  }
+  };
 
   return (
     <>
@@ -38,9 +37,7 @@ export const Nav = ({ isMobile, cbExtendNav }) => {
           extend={extendNav}
           display={categories.status ? "flex" : "none"}
         >
-          <StyledOpenButton
-            onClick={extendNavHandler}
-          >
+          <StyledOpenButton onClick={extendNavHandler}>
             {extendNav ? <>&#10005;</> : <>&#8801;</>}
           </StyledOpenButton>
           {extendNav && categories.status
