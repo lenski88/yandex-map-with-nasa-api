@@ -16,7 +16,7 @@ export const NotFound = ({
   useEffect(() => {
     if (extendNavigation) setHidden(true);
     if (hidden) return () => setHidden(false);
-  }, [selectedEvents, extendNavigation]);
+  }, [selectedEvents, extendNavigation, hidden]);
   const hiddenHandler = () => {
     setHidden(true);
   };

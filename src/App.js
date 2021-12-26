@@ -7,6 +7,7 @@ import { Nav } from "./components/Nav/Nav";
 import { InfoCategoriesMarker } from "./components/Info/InfoCategoriesMarker";
 import { InfoCategories } from "./components/Info/InfoCategories";
 import { NotFound } from "./components/NotFound/NotFound";
+import { Preloader } from "./components/Preloader/Preloader";
 
 import { eventsThunkAC } from "./redux/Events/actions";
 
@@ -41,36 +42,32 @@ function App() {
     setCategoryWasSelect(true);
   };
   return (
-    <div className="app">
-      <YandexMap
-        selectedEvents={selectedEvents}
-        coordsSelectedEvents={coordsSelectedEvents}
-      />
-      {events.length && (
+    events.length ? (
+      <div className="app">
+        <YandexMap
+          selectedEvents={selectedEvents}
+          coordsSelectedEvents={coordsSelectedEvents}
+        />
         <Nav
           isMobile={isMobile}
           cbExtendNav={extendNav}
           cbCategoryWasSelect={categoryWasSelectInNav}
         />
-      )}
-      <NotFound
-        selectedEvents={selectedEvents}
-        categoryWasSelect={categoryWasSelect}
-        extendNavigation={extendNavigation}
-      />
-      {events.length && (
+        <NotFound
+          selectedEvents={selectedEvents}
+          categoryWasSelect={categoryWasSelect}
+          extendNavigation={extendNavigation}
+        />
         <InfoCategories
           showInfoCategories={showInfoCategories}
           extendNavigation={extendNavigation}
         />
-      )}
-      {events.length && (
         <InfoCategoriesMarker
           cbShowInfoCategories={cbShowInfoCategories}
           extendNavigation={extendNavigation}
         />
-      )}
-    </div>
+      </div>
+    ) : <Preloader/>
   );
 }
 
