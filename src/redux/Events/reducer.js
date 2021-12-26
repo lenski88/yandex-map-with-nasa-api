@@ -13,6 +13,7 @@ const initialState = {
   status: null,
   events: null,
   selectedEvents: null,
+  coordsSelectedEvents: null
 };
 
 export const eventsReducer = (state = initialState, action) => {
@@ -34,7 +35,7 @@ export const eventsReducer = (state = initialState, action) => {
       const coordsArr = selectedEvents.map((item) => {
         return item.geometries[0].coordinates;
       });
-      return { ...state, selectedEvents: coordsArr };
+      return { ...state, selectedEvents: selectedEvents, coordsSelectedEvents: coordsArr };
     }
     default: {
       return state;

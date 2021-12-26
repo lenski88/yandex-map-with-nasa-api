@@ -1,6 +1,5 @@
-import { YMaps, Map, ZoomControl,Placemark } from "react-yandex-maps";
+import { YMaps, Map, ZoomControl, Placemark } from "react-yandex-maps";
 import { StyledMap } from "../styled/YandexMap.styled";
-
 
 const mapData = {
   center: [50, 0],
@@ -24,24 +23,40 @@ const optionsZoom = {
   },
 };
 
+const optionsPlacemark = {
+  preset: "islands#redCircleDotIcon",
+};
 
-export const YandexMap = ({selectedEvents}) => (
+export const YandexMap = ({ selectedEvents, coordsSelectedEvents }) => (
   <>
-  {console.log(selectedEvents)}
-  <StyledMap>
-    <YMaps>
-      <Map
-        defaultState={mapData}
-        options={optionsMap}
-        width="100%"
-        height="100%"
-      >
-       {selectedEvents && selectedEvents.map(item=> {
-          return <Placemark key={item} geometry={[item[1],item[0]]}/>
-        })}
-        <ZoomControl options={optionsZoom} />
-      </Map>
-    </YMaps>
-  </StyledMap>
+    <StyledMap>
+      <YMaps>
+        <Map
+          defaultState={mapData}
+          options={optionsMap}
+          width="100%"
+          height="100%"
+        >
+          {selectedEvents &&
+            coordsSelectedEvents.map((item, index) => {
+              return (
+                <Placemark
+                  key={item}
+                  geometry={[item[1], item[0]]}
+                  options={optionsPlacemark}
+                  properties={{
+                    hintContent: `
+                    ${selectedEvents[index].title} 
+                    Coordinates: [${item[1]}, ${item[0]}] 
+                    `,
+                  }}
+                  modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+                />
+              );
+            })}
+          <ZoomControl options={optionsZoom} />
+        </Map>
+      </YMaps>
+    </StyledMap>
   </>
 );

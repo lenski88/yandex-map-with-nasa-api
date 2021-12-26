@@ -7,12 +7,14 @@ import { Nav } from "./components/Nav/Nav";
 import { InfoCategoriesMarker } from "./components/Info/InfoCategoriesMarker";
 import { InfoCategories } from "./components/Info/InfoCategories";
 
-import { eventsThunkAC, selectedEventAC } from "./redux/Events/actions";
+import { eventsThunkAC } from "./redux/Events/actions";
 
 function App() {
   const [showInfoCategories, setShowInfoCategories] = useState(false);
   const [extendNavigation, setExtendNavigation] = useState(false);
   const selectedEvents = useSelector((state) => state.events.selectedEvents);
+  const coordsSelectedEvents = useSelector((state) => state.events.coordsSelectedEvents);
+
 
   const isMobile = useMediaQuery({
     query: "(max-width: 601px)",
@@ -32,7 +34,7 @@ function App() {
   };
   return (
     <div className="app">
-      <YandexMap selectedEvents={selectedEvents} />
+      <YandexMap selectedEvents={selectedEvents} coordsSelectedEvents={coordsSelectedEvents} />
       <Nav isMobile={isMobile} cbExtendNav={extendNav} />
       <InfoCategories
         showInfoCategories={showInfoCategories}
