@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { categoriesThunkAC } from "../../redux/Categories/actions";
+import { selectedEventAC } from "../../redux/Events/actions";
 
 import {
   StyledNav,
@@ -22,13 +23,21 @@ export const Nav = ({ isMobile, cbExtendNav }) => {
     cbExtendNav(!extendNav);
   };
 
+  const selectEventHandler = (eo) => {
+    dispatch(selectedEventAC(eo.target.innerText));
+  };
+
   return (
     <>
       {!isMobile ? (
         <StyledNav display={categories.status ? "flex" : "none"}>
           {categories.status
             ? categories.categories.map((item) => {
-                return <li key={item.id}>{item.title}</li>;
+                return (
+                  <li key={item.id} onClick={selectEventHandler}>
+                    {item.title}
+                  </li>
+                );
               })
             : null}
         </StyledNav>
@@ -42,7 +51,11 @@ export const Nav = ({ isMobile, cbExtendNav }) => {
           </StyledOpenButton>
           {extendNav && categories.status
             ? categories.categories.map((item) => {
-                return <li key={item.id}>{item.title}</li>;
+                return (
+                  <li key={item.id} onClick={selectEventHandler}>
+                    {item.title}
+                  </li>
+                );
               })
             : null}
         </StyledNavExtend>

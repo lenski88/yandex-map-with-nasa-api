@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
 import { YandexMap } from "./components/Map/YandexMap";
@@ -6,12 +7,21 @@ import { Nav } from "./components/Nav/Nav";
 import { InfoCategoriesMarker } from "./components/Info/InfoCategoriesMarker";
 import { InfoCategories } from "./components/Info/InfoCategories";
 
+import { eventsThunkAC, selectedEventAC } from "./redux/Events/actions";
+
 function App() {
   const [showInfoCategories, setShowInfoCategories] = useState(false);
   const [extendNavigation, setExtendNavigation] = useState(false);
+  const selectedEvents = useSelector((state) => state.events.selectedEvents);
+
   const isMobile = useMediaQuery({
     query: "(max-width: 601px)",
   });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(eventsThunkAC());
+  }, [dispatch]);
 
   const cbShowInfoCategories = (iShow) => {
     setShowInfoCategories(iShow);
@@ -22,7 +32,7 @@ function App() {
   };
   return (
     <div className="app">
-      <YandexMap />
+      <YandexMap selectedEvents={selectedEvents} />
       <Nav isMobile={isMobile} cbExtendNav={extendNav} />
       <InfoCategories
         showInfoCategories={showInfoCategories}

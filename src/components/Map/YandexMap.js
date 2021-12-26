@@ -1,5 +1,6 @@
-import { YMaps, Map, ZoomControl, Placemark } from "react-yandex-maps";
+import { YMaps, Map, ZoomControl,Placemark } from "react-yandex-maps";
 import { StyledMap } from "../styled/YandexMap.styled";
+
 
 const mapData = {
   center: [50, 0],
@@ -23,7 +24,10 @@ const optionsZoom = {
   },
 };
 
-export const YandexMap = () => (
+
+export const YandexMap = ({selectedEvents}) => (
+  <>
+  {console.log(selectedEvents)}
   <StyledMap>
     <YMaps>
       <Map
@@ -32,8 +36,12 @@ export const YandexMap = () => (
         width="100%"
         height="100%"
       >
+       {selectedEvents && selectedEvents.map(item=> {
+          return <Placemark key={item} geometry={[item[1],item[0]]}/>
+        })}
         <ZoomControl options={optionsZoom} />
       </Map>
     </YMaps>
   </StyledMap>
+  </>
 );
