@@ -26,6 +26,8 @@ export const Nav = ({ isMobile, cbExtendNav, cbCategoryWasSelect }) => {
   const selectEventHandler = (eo) => {
     dispatch(selectedEventAC(eo.target.innerText));
     cbCategoryWasSelect();
+    setExtendNav(false);
+    cbExtendNav(false);
   };
 
   return (

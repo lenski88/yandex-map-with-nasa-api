@@ -46,7 +46,7 @@ export const YandexMap = ({ selectedEvents, coordsSelectedEvents }) => (
                   options={optionsPlacemark}
                   properties={{
                     hintContent: `
-                    ${selectedEvents[index].title} 
+                    ${selectedEvents[index].title} | 
                     Coordinates: [${item[1]}, ${item[0]}] 
                     `,
                   }}
