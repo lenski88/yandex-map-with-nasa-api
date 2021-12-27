@@ -23,7 +23,7 @@ const categoriesErrorAC = () => {
 
 export const categoriesThunkAC = () => (dispatch) => {
   dispatch(categoriesLoadingAC);
-  isoFetch("https://eonet.gsfc.nasa.gov/api/v2.1/categories")
+  isoFetch("https://eonet.gsfc.nasa.gov/api/v3/categories")
     .then((response) => {
       if (!response.ok) {
         let Err = new Error(`fetch error ${response.status}`);

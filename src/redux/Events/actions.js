@@ -24,7 +24,7 @@ const eventsErrorAC = () => {
 
 export const eventsThunkAC = () => (dispatch) => {
   dispatch(eventsLoadingAC);
-  isoFetch("https://eonet.gsfc.nasa.gov/api/v2.1/events")
+  isoFetch("https://eonet.gsfc.nasa.gov/api/v3/events")
     .then((response) => {
       if (!response.ok) {
         let Err = new Error(`fetch error ${response.status}`);
@@ -36,6 +36,7 @@ export const eventsThunkAC = () => (dispatch) => {
     })
     .then((data) => {
       dispatch(eventsSetAC(data.events));
+      console.log(data.events)
     })
     .catch((error) => {
       console.error(error);
