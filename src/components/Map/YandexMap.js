@@ -28,35 +28,35 @@ const optionsPlacemark = {
 };
 
 export const YandexMap = ({ selectedEvents, coordsSelectedEvents }) => (
-  <>
-    <StyledMap>
-      <YMaps>
-        <Map
-          defaultState={mapData}
-          options={optionsMap}
-          width="100%"
-          height="100%"
-        >
-          {selectedEvents &&
-            coordsSelectedEvents.map((item, index) => {
-              return (
-                <Placemark
-                  key={item}
-                  geometry={[item[1], item[0]]}
-                  options={optionsPlacemark}
-                  properties={{
-                    hintContent: `
-                    ${selectedEvents[index].title} | 
-                    Coordinates: [${item[1]}, ${item[0]}] 
-                    `,
-                  }}
-                  modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
-                />
-              );
-            })}
-          <ZoomControl options={optionsZoom} />
-        </Map>
-      </YMaps>
-    </StyledMap>
-  </>
+  <StyledMap>
+    <YMaps>
+      <Map
+        defaultState={mapData}
+        options={optionsMap}
+        width="100%"
+        height="100%"
+      >
+        {selectedEvents &&
+          coordsSelectedEvents.map((item, index) => {
+            return (
+              <Placemark
+                key={item}
+                geometry={[item[1], item[0]]}
+                options={optionsPlacemark}
+                properties={{
+                  hintContent: `${selectedEvents[index].title}   
+                    Coordinates: [${item[1]}, ${item[0]}]`,
+                    balloonContentHeader:  `<span>${selectedEvents[index].title}</span>`,
+                    balloonContentBody:  `<span>Coordinates:[${item[1]}, ${item[0]}]</span><br/>` +
+                    `<a target="_blank" href='${selectedEvents[index].sources[0].url}'>More information</a> <br/>`,
+                  balloonContentFooter: "Information provided:<br/>EONET",
+                }}
+                modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+              />
+            );
+          })}
+        <ZoomControl options={optionsZoom} />
+      </Map>
+    </YMaps>
+  </StyledMap>
 );

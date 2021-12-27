@@ -32,13 +32,14 @@ export const StyledNav = styled.ul`
 export const StyledNavExtend = styled.ul`
   display: ${({ display }) => display};
   flex-direction: column;
-  justify-content: ${(props)=> props.extend ? 'space-around' : 'flex-startd'};
+  justify-content: ${(props) =>
+    props.extend ? "space-around" : "flex-startd"};
   align-items: flex-start;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: ${(props)=> props.extend ? '100vh' : 'auto' };
+  height: ${(props) => (props.extend ? "100vh" : "auto")};
   padding: 15px;
   margin: 0px;
   background: rgba(0, 0, 0, 0.9);

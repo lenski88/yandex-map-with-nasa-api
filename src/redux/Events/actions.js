@@ -36,7 +36,6 @@ export const eventsThunkAC = () => (dispatch) => {
     })
     .then((data) => {
       dispatch(eventsSetAC(data.events));
-      console.log(data.events)
     })
     .catch((error) => {
       console.error(error);
@@ -50,3 +49,4 @@ export const selectedEventAC = (event) => {
     event: event,
   };
 };
+

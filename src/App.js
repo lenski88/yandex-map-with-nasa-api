@@ -20,7 +20,6 @@ function App() {
     (state) => state.events.coordsSelectedEvents
   );
   const events = useSelector((state) => state.events.events);
-
   const isMobile = useMediaQuery({
     query: "(max-width: 601px)",
   });

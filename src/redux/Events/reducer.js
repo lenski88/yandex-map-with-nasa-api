@@ -32,7 +32,6 @@ export const eventsReducer = (state = initialState, action) => {
       const selectedEvents = allEvents.filter((item) => {
         return action.event === item.categories[0].title;
       });
-      console.log(selectedEvents)
       const coordsArr = selectedEvents.map((item) => {
         return item.geometry[0].coordinates;
       });
